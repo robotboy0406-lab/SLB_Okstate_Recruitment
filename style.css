@@ -67,7 +67,6 @@ body {
     align-items: center;
     overflow: hidden;
     animation: slideRight 1.2s ease forwards, gradientMove 12s ease infinite;
-
     background: linear-gradient(-45deg, #5b21b6, #6b21a8, #4c1d95, #5b21b6);
     background-size: 400% 400%;
 }
@@ -102,7 +101,7 @@ body {
     color: white;
 }
 
-/* 🔥 TITLE STYLE */
+/* TITLE */
 .overlay h3 {
     font-size: clamp(26px, 3vw, 36px);
     font-weight: bold;
@@ -143,9 +142,45 @@ body {
 
 .btn:hover {
     transform: scale(1.12);
-    text-shadow:
-        0 0 6px rgba(255,255,255,0.7),
-        0 0 14px rgba(255,255,255,0.5);
+    text-shadow: 0 0 6px rgba(255,255,255,0.7),
+                 0 0 14px rgba(255,255,255,0.5);
+}
+
+/* SOCIAL POPUP */
+.social-popup {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(0,0,0,0.85);
+    padding: 18px 28px;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.social-popup a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    margin: 10px 0;
+    text-decoration: underline;
+    transition: transform 0.2s ease;
+}
+
+.social-popup a:hover {
+    transform: scale(1.1);
+}
+
+.social-popup.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
 }
 
 html {

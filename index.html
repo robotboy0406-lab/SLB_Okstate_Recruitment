@@ -24,23 +24,61 @@
         <div class="overlay">
             <h3>OUR LINKS</h3>
 
-            <a href="#" class="btn">Qualifications</a>
-            <a href="#" class="btn">Interest Form</a>
-            <a href="#" class="btn">Our Socials</a>
-            <a href="#" class="btn">Contact Us</a>
+            <!-- QUALIFICATIONS PDF -->
+            <a href="https://drive.google.com/file/d/14hg-6NX32mKou-QOQL_Z8Fvgu0B5dYUp/view?usp=sharing"
+               class="btn" target="_blank">
+               Qualifications
+            </a>
+
+            <!-- INTEREST FORM -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMAC5TKjmW_-WnkCE-jituNciKUGZn7pVx2KOZclMkEW2ZGw/viewform?fbclid=PAdGRleAP3nPhleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAacJ_gMo-cfwTVJmD4vKfICDcz86BTx45G4r05MFH1FtI5AcWOTZOiSbrTaA4g_aem_OvNYs8uXXQ_t_vT37cHl1w"
+               class="btn" target="_blank">
+               Interest Form
+            </a>
+
+            <!-- SOCIAL BUTTON -->
+            <a href="javascript:void(0)" class="btn" id="socialBtn">Our Socials</a>
+
+            <!-- SOCIAL POPUP -->
+            <div class="social-popup" id="socialPopup">
+                <a href="https://www.instagram.com/okstatebetas?igsh=ZTd5aHVqMzlobTk1" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@okstate.betas?_r=1&_t=ZT-93nRE4jJUOD" target="_blank">TikTok</a>
+            </div>
+
+            <!-- CONTACT PDF -->
+            <a href="https://drive.google.com/file/d/12EuPH4fLK5jJBynRDnshmCSNVxWX7X3P/view?usp=sharing"
+               class="btn" target="_blank">
+               Contact Us
+            </a>
         </div>
     </div>
 
 </div>
 
 <script>
+// 3D tilt effect
 document.addEventListener("mousemove", (e) => {
     const right = document.querySelector(".right");
     const x = (window.innerWidth / 2 - e.pageX) / 40;
     const y = (window.innerHeight / 2 - e.pageY) / 40;
     right.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
 });
+
+// SOCIAL POPUP
+const socialBtn = document.getElementById("socialBtn");
+const socialPopup = document.getElementById("socialPopup");
+
+socialBtn.addEventListener("click", () => {
+    socialPopup.classList.toggle("active");
+});
+
+document.addEventListener("click", (e) => {
+    if (!socialBtn.contains(e.target) && !socialPopup.contains(e.target)) {
+        socialPopup.classList.remove("active");
+    }
+});
 </script>
 
 </body>
 </html>
+
