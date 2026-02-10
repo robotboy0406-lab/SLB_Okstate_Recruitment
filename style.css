@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+/* SLIDE ANIMATIONS */
+@keyframes slideLeft {
+    from { transform: translateX(-80px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+    from { transform: translateX(80px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* LEFT SIDE */
+.left {
+    flex: 1 1 400px;
+    background: white;
+    text-align: center;
+    padding: 60px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: slideLeft 1.2s ease forwards;
+}
+
+.logo {
+    max-width: 70%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.left h2 {
+    color: #6b21a8;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+.left p {
+    color: #6b21a8;
+    font-size: clamp(16px, 1.5vw, 18px);
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+/* RIGHT SIDE */
+.right {
+    flex: 1 1 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    animation: slideRight 1.2s ease forwards, gradientMove 12s ease infinite;
+    background: linear-gradient(-45deg, #5b21b6, #6b21a8, #4c1d95, #5b21b6);
+    background-size: 400% 400%;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* CREST BACKGROUND */
+.right::before {
+    content: "";
+    position: absolute;
+    height: 98%;
+    aspect-ratio: 1 / 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url("crest.png") center/contain no-repeat;
+    opacity: 0.25;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-15px); }
+}
+
+/* OVERLAY */
+.overlay {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+}
+
+/* TITLE */
+.overlay h3 {
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+/* 🔥 ONLY THIS TITLE GETS UNDERLINE */
+.overlay h3.links-title {
+    text-decoration: underline;
+}
+/* BUTTONS */
+.btn {
+    display: block;
+    margin: 16px auto;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(20px, 2vw, 26px);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: scale(1.12);
+}
+
+/* SOCIAL POPUP */
+.social-popup {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(0,0,0,0.85);
+    padding: 18px 28px;
+    border-radius: 12px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.social-popup a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+/* POPUP ACTIVE */
+.social-popup.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+/* Only real links underlined */
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* SMOOTH SCROLL */
+html {
+    scroll-behavior: smooth;
+}
+/* Bigger Back Button for Qualifications page */
+/* Bigger Back Button (no background) */
+.btn-large {
+    font-size: clamp(26px, 3vw, 34px);
+    padding: 10px 0;
+    display: inline-block;
+    background: none;
+    border-radius: 0;
+}
+
+.btn-large:hover {
+    transform: scale(1.12);
+}
+
+/* Page layout helpers */
+.page-content {
+    max-width: 700px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.info-card {
+    background: white;
+    color: #4c1d95;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: left;
+    line-height: 1.7;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.info-card hr {
+    margin: 20px 0;
+}
+
+.back-btn-wrap {
+    text-align: center;
+    margin-top: 35px;
+}
+
+/* Bigger Back Button (no background) */
+.btn-large {
+    font-size: clamp(26px, 3vw, 34px);
+    padding: 10px 0;
+    display: inline-block;
+    background: none;
+    border-radius: 0;
+}
+
+.btn-large:hover {
+    transform: scale(1.12);
+}
+
+/* 📱 MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+
+    .page-content {
+        padding: 25px 15px;
+    }
+
+    .page-title {
+        font-size: 22px;
+    }
+
+    .info-card {
+        padding: 20px;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    ul {
+        padding-left: 18px;
+    }
+
+    .btn-large {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+
+    .right {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
